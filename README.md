@@ -2,7 +2,7 @@
 Analysis of graph properties using python (networkx)
 
 
-# Plot the distribution of out-degrees of nodes in the network on a loglog scale. Each data point is a pair (x, y) where x is a positive integer and y is the number of nodes in the network with out-degree equal to x. Restrict the range of x between the minimum and maximum out-degrees. You may filter out data points with a 0 entry. For the log-log scale, use base 10 for both x and y axes.
+## Plot the distribution of out-degrees of nodes in the network on a loglog scale. Each data point is a pair (x, y) where x is a positive integer and y is the number of nodes in the network with out-degree equal to x. Restrict the range of x between the minimum and maximum out-degrees. You may filter out data points with a 0 entry. For the log-log scale, use base 10 for both x and y axes.
 
 Imports.
 
@@ -71,7 +71,7 @@ out_degree_dist = plt.plot(logx, logy, 'o')
     
 
 
-# Compute and plot the least-square regression line for the out-degree distribution in the log-log scale plot. Note we want to find coefficients a and b such that the function log10 y = a · log10 x + b, equivalently, y = 10b · xa, best fits the outdegree distribution. What are the coefficients a and b? For this part, you might want to use the method called polyfit in NumPy with deg parameter equal to 1.
+## Compute and plot the least-square regression line for the out-degree distribution in the log-log scale plot. Note we want to find coefficients a and b such that the function log10 y = a · log10 x + b, equivalently, y = 10b · xa, best fits the outdegree distribution. What are the coefficients a and b? For this part, you might want to use the method called polyfit in NumPy with deg parameter equal to 1.
 
 
 ```python
@@ -101,9 +101,9 @@ print("b: " + str(b))
     
 
 
-# In a k-Cayley tree, what is the number of nodes reachable in d steps from the central node?
+## In a k-Cayley tree, what is the number of nodes reachable in d steps from the central node?
 
-## Answer:
+### Answer:
 
 For k = 3,
 
@@ -119,9 +119,9 @@ and so on.
 
 **General Formula will be: k\*(k-1)^t-1**
 
-# What is the diameter of such a network (in terms of k and n)?
+## What is the diameter of such a network (in terms of k and n)?
 
-## Answer:
+### Answer:
 
 The number of nodes up to distance d from central node is:
 
@@ -145,21 +145,21 @@ k^d $\approx$ N
 so diameter in terms of k and n will be approximately equal to **ln(N) / ln(k)**.
 
 
-# Are such trees ‘small-world’? (i.e. does the diameter grown as logn)
+## Are such trees ‘small-world’? (i.e. does the diameter grown as logn)
 
-## Answer:
+### Answer:
 
 The small-world property of a network means that any 2 randomly selected nodes can be reached from one another by ~log(N) hops. In small-world, most of the nodes are connected to each other. While in Cayley Tree, many nodes are not interconnected. For example if N = 100 then log(100) = 2, it can be seen that all the randomly selected nodes cannot be reached from one another in just 2 step. Hence, the given network does not display the small-world property.
 
-# Are such trees ‘searchable’? Why or why not?
+## Are such trees ‘searchable’? Why or why not?
 
-## Answer:
+### Answer:
 
 For a network to be searchable, any randomly selected node should be found in O(log(N)^$\beta$) from any source node. In Cayley Tree, search time is largely dependent on the number of steps the given node is away from the source node. Interconnectivity in Cayley Tree is very less making search time complexity to be O(N^$\alpha$). In conclusion, such trees are not searchable.
 
 ## Show that the expected degree in this model is 2c.
 
-## Answer:
+### Answer:
 
 Expected Degree = (n − 1) \* p
 
@@ -170,9 +170,9 @@ Expected Degree = c * 2 / (n - 2)
 Hence,
 Average Expected Degree $\approx$ 2 * c
 
-# Show that the degree distribution in this model is p(k) = (e^-c) * (c^(k / 2)) / (k / 2)! if k is even. Also, what is the distribution if k is odd?
+## Show that the degree distribution in this model is p(k) = (e^-c) * (c^(k / 2)) / (k / 2)! if k is even. Also, what is the distribution if k is odd?
 
-## Answer:
+### Answer:
 
 Suppose there are t triangle and probability of having t triangles is as follows:
 
@@ -198,9 +198,9 @@ model is 2 * c as shown in the answer of Q # 3.1, so in this case p[k] = 0.**
 
 
 
-# What is the clustering co-efficient Cn? What is limit Cn as n tends to infinity?
+## What is the clustering co-efficient Cn? What is limit Cn as n tends to infinity?
 
-## Answer:
+### Answer:
 
 Clustering co-efficient for the given model can be defined by dividing ( number of triangles ) * 3 / (number of connected triplets). 
 
@@ -220,9 +220,9 @@ n * e^-c * (2*c ^ 2 + c) * e^c = n * c * (2 * c + 1)
 
 When n tends to infinity the clustering co-efficient stays the same i.e. 1 / (2 * c + 1)
 
-# Show that as a fraction of network size, the expected size S of the giant component satisfies S =1− exp(−cS(2 − S)). Is there a phase transition? If yes, when? Make sure you explain how you got the answer.
+## Show that as a fraction of network size, the expected size S of the giant component satisfies S =1− exp(−cS(2 − S)). Is there a phase transition? If yes, when? Make sure you explain how you got the answer.
 
-## Answer:
+### Answer:
 
 Size of the giant component will be S = 1 - h, where h is the probability that a node is not in the component. If a node is not in the giant component then it would be part of the network outside that component. There are ((n - 1) C 2) distinct pairs of nodes in the network outside that component. For each pair, either they do not form triangle with that node and probability of that would be 1 - p or they form a triangle with that node with probabiliy p but, both the nodes of the pair are not in the giant component so their probabilities would be h as well and collectively it would be h^2. So, probability that a nodes in not in the component is,
 
@@ -242,7 +242,7 @@ writing above equation in terms of S by putting h = 1 - S, we get
 
 # What is the value of the clustering co-efficient when the giant component fills half of the network?
 
-## Answer:
+### Answer:
 
 From formula in previous question, we can find value of c where
 
@@ -256,7 +256,7 @@ Putting value of c in clustering co-efficient formula derived in Q # 3.3, we get
 
 **C = 1 / (((8/3) * ln(2)) + 1) = 0.35**
 
-# Generate two undirected unweighted graphs: G_er and G_pl. G_er is the Erdos-Renyi graph of 100 nodes, with p = 0.1. G_pl is a preferential model graph with n = 100 nodes (steps) and the number of edges to attach at each step m = 5. Feel free to use any package or code you find online to generate these graphs.
+## Generate two undirected unweighted graphs: G_er and G_pl. G_er is the Erdos-Renyi graph of 100 nodes, with p = 0.1. G_pl is a preferential model graph with n = 100 nodes (steps) and the number of edges to attach at each step m = 5. Feel free to use any package or code you find online to generate these graphs.
 
 Generating Erdos-Renyi graph.
 
@@ -299,7 +299,7 @@ G_pl_plt = plt.show()
     
 
 
-# Implement the discrete-time ‘flu-like’ SIS model in your favorite language. Your code should take a graph-edge-list, the beta value, the delta value, and the max_time as input, and give the number of infected nodes at each timestep till max_time. Initialize the model with all nodes as infected at time-step 0. For our experiments, let max_time = 500.
+## Implement the discrete-time ‘flu-like’ SIS model in your favorite language. Your code should take a graph-edge-list, the beta value, the delta value, and the max_time as input, and give the number of infected nodes at each timestep till max_time. Initialize the model with all nodes as infected at time-step 0. For our experiments, let max_time = 500.
 
 
 ```python
@@ -328,7 +328,7 @@ def run_SIS_Model(graph, beta, delta, max_time = 500):
     return model.build_trends(iterations), model
 ```
 
-# Implement the ACC and RAND policies. Given a budget k and a graph-edge-list, your code should output the nodes chosen according to each policy.
+## Implement the ACC and RAND policies. Given a budget k and a graph-edge-list, your code should output the nodes chosen according to each policy.
 
 Implementing ACC Policy.
 
@@ -384,9 +384,9 @@ def rand_policy(graph, k):
     return rand_selection
 ```
 
-# Run the SIS model with beta=delta=0.2 on G_er and G_pl. Now pick k = 10 nodes according to both ACC and RAND policies for each of the two graphs. Remove these nodes, and re-run the SIS model on the new (smaller) versions of each graph. Generate two plots, one for each graph: in each, plot the S =1− exp(−cS(2 − S)) number of infections vs time when (a) no nodes have been removed (b) when nodes have been removed according to ACC and (c) when nodes have been removed according to RAND (use different colors for (a)-(b)-(c)).
+## Run the SIS model with beta=delta=0.2 on G_er and G_pl. Now pick k = 10 nodes according to both ACC and RAND policies for each of the two graphs. Remove these nodes, and re-run the SIS model on the new (smaller) versions of each graph. Generate two plots, one for each graph: in each, plot the S =1− exp(−cS(2 − S)) number of infections vs time when (a) no nodes have been removed (b) when nodes have been removed according to ACC and (c) when nodes have been removed according to RAND (use different colors for (a)-(b)-(c)).
 
-### For G_er graph.
+#### For G_er graph.
 
 
 ```python
@@ -457,7 +457,7 @@ ax.legend(["Without Removing Nodes", "After Removing Nodes by ACC Policy", "Afte
     
 
 
-### For G_pl graph.
+#### For G_pl graph.
 
 
 ```python
@@ -512,9 +512,9 @@ ax.legend(["Without Removing Nodes", "After Removing Nodes by ACC Policy", "Afte
     
 
 
-# Q4.5. (5 points) What do you observe w.r.t. the performance of RAND and ACC on the two graphs? Explain.
+## What do you observe w.r.t. the performance of RAND and ACC on the two graphs? Explain.
 
-## Answer:
+### Answer:
 
 There is no obvious difference between ACC and RAND immunization policy w.r.t to performance. If you looks at the graph closely you will see that in both of the graphs, on average, number of infected nodes after removing nodes by ACC policy is less as compared to number of infected nodes after removing nodes by RAND policy. The reason for this could be that in ACC we select random neighbor of randomly selected node, in other words we select only those nodes that have neighbors while on the other hand in RAND we select nodes randomly. In RAND, we can get nodes without neighbors and such nodes have less potential to spread virus as compared to nodes that have neighbors. Thats why after removing nodes selected by ACC the total number of infected nodes in the graph are less as we remove nodes with neighbors.
 
